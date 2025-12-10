@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="language" content="en">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="author" content="Tech With Us">
+      <meta name="robots" content="index, follow">
+      <meta name="googlebot" content="index, follow">
+      <meta property="og:title" content="Happy Birthday">
+      <meta property="og:description" content='Birthday Special'>
+      <meta property="og:type" content="website">
+      <meta property="og:site_name" content="Happy Birthday">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="theme-color" content="#e879f9">
+      <link rel="icon" href="./img/icon.png" type="image/x-icon">
+      <meta name="description" content="Wishing you the Happiest birthday of the hole life">
+      <meta name="keywords" content="birthday wishes, happy birthday, my love, best day of your life">
+
+      <title>Happy Birthday</title>
+      <link rel="stylesheet" href="birthdayOverlay.css" />
+      <!-- <link rel="stylesheet" href="style.css"> -->
+      <!-- <link rel="stylesheet" href="cakeCut.css"> -->
+      <style>
+         body {
+            background-color: #111;
+         }
+      </style>
+   </head>
+
+   <body id="bd">
+      <canvas id="c"></canvas>
+      <script src="happyBirthday.js"></script>
+      <div id="wishContainer" class="container hidden">
+      </div>
+
+      <!-- Big fixed heart in corner -->
+      <!-- <div class="big-heart"></div> -->
+
+      <!-- <script src="bg.js"></script> -->
+      <script src="script.js"></script>
+      <!-- <script src="wishes.js"></script> -->
+      <!-- <script src="bg_dark.js"></script> -->
+   </body>
+   <script>
+      let runNow = () => {
+         const initialContainer = document.getElementById('initial-container');
+         const finalContainer = document.getElementById('wishContainer');
+         const wishTextElement = document.getElementById('wish-text');
+         let body = document.getElementById('bd')
+         body.style.overflow = 'scroll'
+
+
+         // Delay the transition for effect
+         setTimeout(() => {
+            // Fade and slide out initial container
+            initialContainer.classList.add('hidden');
+            button.classList.add('hidden');
+            finalContainer.textContent = '';
+            const colors = [
+               '#ed4aff', '#f0abfc', '#d4f447', '#f0abfc', '#d4f447',
+               '#fdf4ff', '#f0abfc', '#d4f447', '#fdf4ff', '#5ff4f2', '#f0abfc',
+               '#d4f447', '#f0abfc', '#fdf4ff', '#f0abfc', '#5ff4f2', '#fdf4ff'
+            ];
+
+
+            // Load text and show final container
+            setTimeout(() => {
+               finalContainer.classList.remove('hidden');
+               fetch('wishes.txt')
+                  .then(response => {
+                     if (!response.ok) {
+                        throw new Error('Failed to load wishes.txt');
+                     }
+                     return response.text();
+                  })
+                  .then(text => {
+                     const lines = text.split('\n').filter(line => line.trim() !== '');
+
+                     lines.forEach((line, index) => {
+                        const div = document.createElement('div');
+                        div.classList.add('line');
+
+                        // Assign a color from the array, looping if needed
+                        const color = colors[index % colors.length];
+                        div.style.color = color;
+
+                        div.textContent = line;
+                        div.style.animationDelay = `${index * 0.5}s`;
+
+                        finalContainer.appendChild(div);
+                     });
+
+                  })
+            }, 100); // Wait for fade-out to complete
+
+         }, 0); // Initial delay before starting
+         const btn_div = document.createElement('div')
+         btn_div.classList.add("show-img-btn")
+         btn_div.addEventListener('click', () => {
+            btn_div.classList.add("hidden")
+            imgShow()
+         })
+         btn_div.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-images icn" viewBox="0 0 16 16">
+  <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+  <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2M14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1M2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1z"/>
+</svg>`
+         finalContainer.insertAdjacentElement('afterend', btn_div)
+      };
+      let imgShow = () => {
+         const finalContainer = document.getElementById('wishContainer');
+
+         let inner = ` <main class="main-img" id="img-cont-ig">
+         <img src="./img/m1.jpg" class="slide" alt="">
+         <img src="./img/m2.jpg" class="slide" alt="">
+         <img src="./img/m3.jpg" class="slide" alt="">
+         <img src="./img/m4.jpg" class="slide" alt="">
+         <img src="./img/m5.jpg" class="slide" alt="">
+         <img src="./img/m6.jpg" class="slide" alt="">
+         <img src="./img/m7.jpg" class="slide" alt="">
+         <img src="./img/m8.jpg" class="slide" alt="">
+         <img src="./img/m9.jpg" class="slide" alt="">
+      </main>
+      <div class="nav">
+         <button onclick="goPrev()"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-left"
+               viewBox="0 0 16 16">
+               <path fill-rule="evenodd"
+                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+            </svg></button>
+         <button onclick="goNext()"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+               class="bi bi-arrow-right" viewBox="0 0 16 16">
+               <path fill-rule="evenodd"
+                  d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+            </svg></button>
+         </div>
+         <div class="wishes-end">
+            <h1>And again, Wish you for your wonderful day</h1>
+            <h2>Happy birthday KASHISH</h2>
+            </div>
+   `
+         const divOp = document.createElement('div')
+         divOp.innerHTML = inner
+         finalContainer.insertAdjacentElement('afterend', divOp)
+
+         setTimeout(() => {
+            const script = document.createElement('script'); // Create the script tag
+            script.src = 'img.js';                          // Set the source file
+            script.type = 'text/javascript';                // Optional: define type
+            document.body.appendChild(script);              // Append to body (or head)
+
+         }, 1000)
+      }
+
+   </script>
+
+</html>

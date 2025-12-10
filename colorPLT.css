@@ -1,0 +1,54 @@
+* {
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
+}
+
+:root {
+   /* color palette colors  */
+   --clr-50: #fdf4ff;
+   --clr-100: #fae8ff;
+   --clr-200: #f5d0fe;
+   --clr-300: #f0abfc;
+   --clr-400: #e879f9;
+   --clr-500: #d946ef;
+   --clr-600: #c026d3;
+   --clr-700: #a21caf;
+   --clr-800: #86198f;
+   --clr-900: #701a75;
+   --clr-950: #4a044e;
+
+   /* font size */
+   --fs-h1-1: 36px;
+   --fs-h1-2: 42px;
+   --fs-h1-3: 48px;
+   --fs-h2-1: 28px;
+   --fs-h2-2: 30px;
+   --fs-h3-1: 22px;
+   --fs-h3-2: 36px;
+   --fs-h4-1: 18px;
+   --fs--para: 16px;
+   --fs--small-txt: 14px;
+
+   /* Font Weights */
+   --fw-bold: 700;
+   --fw-semibold: 600;
+   --fw-medium: 500;
+   --fw-normal: 400;
+}
+
+@media (max-width: 768px) {
+   :root {
+      /* font size */
+      --fs-h1-1: 28px;
+      --fs-h1-2: 32px;
+      --fs-h1-3: 36px;
+      --fs-h2-1: 24px;
+      --fs-h2-2: 36px;
+      --fs-h3-1: 20px;
+      --fs-h3-2: 22px;
+      --fs-h4-1: 16px;
+      --fs--para: 15px;
+      --fs--small-txt: 13px;
+   }
+}
